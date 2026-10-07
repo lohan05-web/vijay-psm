@@ -1,0 +1,66 @@
+/* ============================================================
+   Responsive breakpoints — tablet & mobile.
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-23, .grid-32 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 992px) {
+  .sidebar { transform: translateX(-100%); }
+  .sidebar.open { transform: translateX(0); box-shadow: 0 0 60px rgba(0, 0, 0, .45); }
+  .main { margin-left: 0; }
+  .topbar .menu-toggle { display: grid; place-items: center; }
+
+  .sidebar-backdrop {
+    position: fixed; inset: 0; background: rgba(15, 22, 40, .5);
+    z-index: 55; display: none;
+  }
+  .sidebar-backdrop.show { display: block; }
+
+  .auth-page { grid-template-columns: 1fr; }
+  .auth-visual { display: none; }
+}
+
+@media (max-width: 768px) {
+  .content { padding: 18px 14px 32px; }
+  .topbar { padding: 0 14px; gap: 10px; }
+  .topbar-title { font-size: 15px; }
+  .user-chip .u-meta { display: none; }
+
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .stat-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+  .stat-card .st-value { font-size: 25px; }
+
+  .page-header { flex-direction: column; align-items: stretch; }
+  .page-actions .btn { flex: 1; }
+
+  .toolbar { padding: 12px 14px; }
+  .toolbar .search-box { max-width: none; }
+  .toolbar .select { flex: 1; min-width: 120px; }
+
+  .card-header { padding: 14px; }
+  .card-body { padding: 15px; }
+
+  .modal-overlay { padding: 12px; }
+  .modal { max-width: 100%; }
+  .modal-body { padding: 16px; }
+
+  .bar-chart { height: 150px; gap: 7px; }
+  .bar-chart .bar-label { font-size: 10px; }
+  .donut-wrap { justify-content: center; text-align: center; }
+
+  .auth-panel { padding: 32px 22px; }
+  .auth-box h1 { font-size: 23px; }
+
+  .hide-sm { display: none !important; }
+}
+
+@media (max-width: 480px) {
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+  .quick-actions { grid-template-columns: 1fr; }
+  .pagination { justify-content: center; }
+  .toast-container { left: 12px; right: 12px; max-width: none; }
+}

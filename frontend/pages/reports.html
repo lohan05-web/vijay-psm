@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reports | CRM Pro</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/dashboard.css">
+<link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body data-page="reports">
+<div class="app-shell">
+  <div id="sidebar"></div>
+  <div class="main">
+    <div id="navbar"></div>
+    <main class="content">
+      <div class="page-header">
+        <div>
+          <h1 class="ph-title">Reports</h1>
+          <p class="ph-sub" id="reportsSubtitle">Generated report overview</p>
+        </div>
+        <div class="page-actions">
+          <div class="row">
+            <select class="select" id="exportTable">
+              <option value="">Select table to export</option>
+            </select>
+            <button class="btn" id="exportBtn">Export</button>
+            <button class="btn btn-primary" id="refreshPowerbiBtn">Refresh Power BI datasets</button>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-20">
+        <div class="period-pills" id="periodPills">
+          <button data-period="daily">Daily</button>
+          <button data-period="weekly">Weekly</button>
+          <button data-period="monthly" class="active">Monthly</button>
+          <button data-period="yearly">Yearly</button>
+        </div>
+        <div class="small muted" id="periodRange"></div>
+      </div>
+      <div class="stat-grid" id="periodStats"></div>
+      <div class="grid-23 mb-20">
+        <div class="card chart-card">
+          <div class="card-header">
+            <h3>6-month trend</h3>
+            <div class="ch-sub">Leads and projects created per month</div>
+          </div>
+          <div class="card-body">
+            <div class="bar-chart" id="trendChart"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3>Leads by source</h3>
+            <div class="ch-sub">Top channels</div>
+          </div>
+          <div class="card-body">
+            <div class="hbar-list" id="leadsBySource"></div>
+          </div>
+        </div>
+      </div>
+      <div class="grid-2 mb-20">
+        <div class="card">
+          <div class="card-header">
+            <h3>Pipeline by status</h3>
+            <div class="ch-sub">Lead distribution by status</div>
+          </div>
+          <div class="card-body">
+            <div class="hbar-list" id="leadsByStatus"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3>Task &amp; team snapshot</h3>
+            <div class="ch-sub">Current workload and staffing</div>
+          </div>
+          <div class="card-body">
+            <div class="kpi-row" id="teamSnapshot"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-20">
+        <div class="card-header">
+          <div>
+            <h3>Recent activity</h3>
+            <div class="ch-sub">Latest activity logs</div>
+          </div>
+          <button class="btn btn-sm btn-danger" id="clearActivityBtn">Delete all</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Action</th>
+                <th>Entity</th>
+                <th>Details</th>
+                <th>Time</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="activityTable"></tbody>
+          </table>
+        </div>
+        <div id="activityPagination"></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h3>Power BI datasets</h3>
+          <div class="ch-sub">Available datasets and row counts</div>
+        </div>
+        <div class="card-body" id="powerbiCard"></div>
+      </div>
+    </main>
+    <div id="footer"></div>
+  </div>
+</div>
+<div id="toast-root" class="toast-container"></div>
+<div id="modal-root"></div>
+<script src="/js/auth.js"></script>
+<script src="/js/reports.js"></script>
+</body>
+</html>

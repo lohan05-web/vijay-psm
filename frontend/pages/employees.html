@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Employees | CRM Pro</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/dashboard.css">
+<link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body data-page="employees">
+<div class="app-shell">
+  <div id="sidebar"></div>
+  <div class="main">
+    <div id="navbar"></div>
+    <main class="content">
+      <div class="page-header">
+        <div>
+          <div class="ph-title">Employees</div>
+          <div class="ph-sub">Team members, roles, contact details and workload</div>
+        </div>
+        <div class="page-actions">
+          <a class="btn" href="/pages/reports.html">Reports</a>
+          <button class="btn btn-primary" type="button" id="addEmployeeBtn">&#65291; Add employee</button>
+        </div>
+      </div>
+
+      <div class="stat-grid" id="empStats">
+        <div class="loading" style="grid-column:1/-1"><div><div class="spinner"></div>Loading…</div></div>
+      </div>
+
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <h3>Team directory</h3>
+            <div class="ch-sub" id="teamCount"></div>
+          </div>
+        </div>
+        <div class="toolbar">
+          <div class="search-box">
+            <span class="s-ico">&#128269;</span>
+            <input class="input" type="search" id="empSearch" placeholder="Search name, email, department…">
+          </div>
+          <select class="select" id="filterRole">
+            <option value="">All roles</option>
+            <option value="On Leave">On Leave</option>
+          </select>
+          <select class="select" id="filterStatus">
+            <option value="">All statuses</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+            <option value="On Leave">On Leave</option>
+          </select>
+          <div class="spacer"></div>
+          <button class="btn btn-ghost btn-sm" type="button" id="clearFilters">Clear</button>
+        </div>
+        <div class="card-body tight">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Employee</th>
+                  <th>Role</th>
+                  <th>Department</th>
+                  <th>Phone</th>
+                  <th>Workload</th>
+                  <th>Status</th>
+                  <th>Joined</th>
+                  <th class="td-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="empRows">
+                <tr><td colspan="8"><div class="loading"><div><div class="spinner"></div>Loading…</div></div></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="pagination"></div>
+        </div>
+      </section>
+    </main>
+    <div id="footer"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="employeeModal">
+  <div class="modal lg">
+    <div class="modal-header">
+      <h3 id="employeeModalTitle">Add employee</h3>
+      <button class="modal-close" data-close="employeeModal" type="button">&times;</button>
+    </div>
+    <form id="employeeForm" novalidate>
+      <div class="modal-body">
+        <div class="form-error mb-16 hidden" id="employeeFormError"></div>
+        <div class="form-grid">
+          <div class="form-group span-2">
+            <label for="empName">Full name <span class="req">*</span></label>
+            <input class="input" type="text" id="empName" placeholder="e.g. Ayesha Khan" required>
+          </div>
+          <div class="form-group">
+            <label for="empEmail">Email address <span class="req">*</span></label>
+            <input class="input" type="email" id="empEmail" placeholder="name@crm.com" required>
+          </div>
+          <div class="form-group">
+            <label for="empPhone">Phone</label>
+            <input class="input" type="tel" id="empPhone" placeholder="+1 555 000 1234">
+          </div>
+          <div class="form-group">
+            <label for="empRole">Role <span class="req">*</span></label>
+            <select class="select" id="empRole"></select>
+          </div>
+          <div class="form-group">
+            <label for="empStatus">Status</label>
+            <select class="select" id="empStatus">
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+              <option value="On Leave">On Leave</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="empDepartment">Department</label>
+            <input class="input" type="text" id="empDepartment" placeholder="e.g. Sales">
+          </div>
+          <div class="form-group">
+            <label for="empDesignation">Designation</label>
+            <input class="input" type="text" id="empDesignation" placeholder="e.g. Account Manager">
+          </div>
+          <div class="form-group">
+            <label for="empJoined">Joined date</label>
+            <input class="input" type="date" id="empJoined">
+          </div>
+          <div class="form-group">
+            <label for="empPassword">Password <span class="req" id="passwordReq">*</span></label>
+            <input class="input" type="password" id="empPassword" placeholder="Minimum 6 characters" autocomplete="new-password">
+            <span class="hint" id="passwordHint">Set the login password for this account.</span>
+          </div>
+          <div class="form-group span-2 hidden" id="newRoleFields">
+            <div style="border:1px dashed var(--border);border-radius:10px;padding:14px;background:var(--surface-2)">
+              <div style="font-weight:700;font-size:13px;margin-bottom:12px">New role details</div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="newRoleName">Role name <span class="req">*</span></label>
+                  <input class="input" type="text" id="newRoleName" placeholder="e.g. Growth Manager" maxlength="40">
+                </div>
+                <div class="form-group">
+                  <label for="newRoleAccess">Base access <span class="req">*</span></label>
+                  <select class="select" id="newRoleAccess">
+                    <option value="employee">Employee — leads, companies, projects</option>
+                    <option value="developer">Developer — tasks and projects</option>
+                    <option value="admin">Admin — full access</option>
+                  </select>
+                </div>
+                <div class="form-group span-2">
+                  <label for="newRoleDesc">Description</label>
+                  <input class="input" type="text" id="newRoleDesc" placeholder="What this role is responsible for" maxlength="200">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" type="button" data-close="employeeModal">Cancel</button>
+        <button class="btn btn-primary" type="submit" id="employeeSave">Save employee</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="employeeDetailModal">
+  <div class="modal lg">
+    <div class="modal-header">
+      <h3>Employee details</h3>
+      <button class="modal-close" data-close="employeeDetailModal" type="button">&times;</button>
+    </div>
+    <div class="modal-body" id="employeeDetailBody">
+      <div class="loading"><div><div class="spinner"></div>Loading…</div></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" type="button" data-close="employeeDetailModal">Close</button>
+      <button class="btn" type="button" id="detailAssignBtn">Assign work</button>
+      <button class="btn btn-primary" type="button" id="detailEditBtn">Edit employee</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="assignWorkModal">
+  <div class="modal lg">
+    <div class="modal-header">
+      <h3>Assign work</h3>
+      <button class="modal-close" data-close="assignWorkModal" type="button">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="row mb-16">
+        <span class="avatar-sm" id="assignAvatar">–</span>
+        <div>
+          <div class="cell-main" id="assignTargetName">—</div>
+          <div class="cell-sub">Work will be assigned to this employee</div>
+        </div>
+      </div>
+
+      <div class="row mb-16" id="assignType">
+        <button class="btn btn-sm btn-primary" type="button" data-assign-type="lead">Lead</button>
+        <button class="btn btn-sm" type="button" data-assign-type="task">Task</button>
+        <button class="btn btn-sm" type="button" data-assign-type="project">Project</button>
+      </div>
+
+      <div class="form-error mb-16 hidden" id="assignError"></div>
+
+      <div id="assignLeadBox">
+        <div class="form-grid">
+          <div class="form-group span-2">
+            <label for="assignLead">Lead <span class="req">*</span></label>
+            <select class="select" id="assignLead"></select>
+            <span class="hint">Unassigned leads are listed first.</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="assignTaskBox" class="hidden">
+        <div class="form-grid">
+          <div class="form-group span-2">
+            <label for="assignProject">Project <span class="req">*</span></label>
+            <select class="select" id="assignProject"></select>
+          </div>
+          <div class="form-group span-2">
+            <label for="assignTaskTitle">Task title <span class="req">*</span></label>
+            <input class="input" type="text" id="assignTaskTitle" placeholder="e.g. Prepare Q4 proposal" maxlength="120">
+          </div>
+          <div class="form-group">
+            <label for="assignTaskPriority">Priority</label>
+            <select class="select" id="assignTaskPriority">
+              <option value="Low">Low</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="High">High</option>
+              <option value="Critical">Critical</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="assignTaskDue">Due date</label>
+            <input class="input" type="date" id="assignTaskDue">
+          </div>
+        </div>
+      </div>
+
+      <div id="assignProjectBox" class="hidden">
+        <div class="form-grid">
+          <div class="form-group span-2">
+            <label for="assignManageProject">Project <span class="req">*</span></label>
+            <select class="select" id="assignManageProject"></select>
+            <span class="hint">Sets this employee as the project manager.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" type="button" data-close="assignWorkModal">Cancel</button>
+      <button class="btn btn-primary" type="button" id="assignSubmit">Assign</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-root"></div>
+<div id="toast-root" class="toast-container"></div>
+<script src="/js/auth.js"></script>
+<script src="/js/employees.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!-- Generic confirmation modal (used by CRM.confirmAction) -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal sm" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h3 id="confirmTitle">Are you sure?</h3>
+      <button class="modal-close" data-close="confirmModal" type="button">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p class="muted mb-0" id="confirmMessage">This action cannot be undone.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" type="button" data-close="confirmModal">Cancel</button>
+      <button class="btn btn-danger" type="button" id="confirmYes">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- Notifications modal -->
+<div class="modal-overlay" id="notifModal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h3>Notifications</h3>
+      <div class="row">
+        <button class="link-btn" type="button" id="markAllRead">Mark all read</button>
+        <button class="modal-close" data-close="notifModal" type="button">&times;</button>
+      </div>
+    </div>
+    <div class="modal-body" id="notifList">
+      <div class="loading"><div><div class="spinner"></div>Loading notifications…</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Reply to message modal -->
+<div class="modal-overlay" id="replyModal">
+  <div class="modal sm" role="dialog" aria-modal="true">
+    <form id="replyForm">
+      <div class="modal-header">
+        <h3>Reply to message</h3>
+        <button class="modal-close" data-close="replyModal" type="button">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="muted small" id="replyContext" style="margin-bottom:10px"></div>
+        <div class="form-group">
+          <label for="replyBody">Your reply <span class="req">*</span></label>
+          <textarea class="textarea" id="replyBody" placeholder="Write your reply…"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" type="button" data-close="replyModal">Cancel</button>
+        <button class="btn btn-primary" type="submit" id="replySendBtn">Send reply</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Quick profile modal -->
+<div class="modal-overlay" id="profileModal">
+  <div class="modal sm" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h3>My profile</h3>
+      <button class="modal-close" data-close="profileModal" type="button">&times;</button>
+    </div>
+    <div class="modal-body" id="profileBody"></div>
+    <div class="modal-footer">
+      <a class="btn btn-primary" href="/pages/settings.html">Open settings</a>
+    </div>
+  </div>
+</div>

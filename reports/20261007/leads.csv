@@ -1,0 +1,4 @@
+id,name,email,phone,company_id,source,status,priority,assigned_to,value,service,description,last_contact,next_followup,created_at,updated_at
+lead_40d2ac2ba106,Loghan .K.J,loghankj@gmail.com,5448565565445,cmp_f5234d6be069,Website,Contacted,Medium,emp_3dbe82c7aa1d,333,website desiging,complete the work,,2026-10-07,2026-10-07 15:42:36,2026-10-07 16:28:26
+lead_28a475ed3c75,hcl,hcl@gaml.com,54485655654450,cmp_96f0e46740a8,Website,Qualified,Medium,emp_fac939ae2286,,,complete and update your satuts,,,2026-10-07 16:01:44,2026-10-07 16:01:44
+lead_fe1ae72b28ae,Bob Buyer,bob@acme.com,555-999-0000,cmp_34d1f236a61f,Website,New,High,,25000,CRM Development,,2026-10-07 18:58:23,2026-10-10,2026-10-07 18:58:23,2026-10-07 18:58:23

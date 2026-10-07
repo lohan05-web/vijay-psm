@@ -1,0 +1,2 @@
+id,name,company_id,lead_id,manager_id,status,priority,budget,start_date,end_date,description,progress,created_at,updated_at
+prj_86065138d368,Acme CRM Build,cmp_34d1f236a61f,,emp_9370c1d0a3e4,In Progress,High,120000,2026-10-01,,,20,2026-10-07 18:58:23,2026-10-07 18:58:24

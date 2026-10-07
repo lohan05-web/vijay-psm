@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leads | CRM Pro</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/dashboard.css">
+<link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body data-page="leads">
+<div class="app-shell">
+  <div id="sidebar"></div>
+  <div class="main">
+    <div id="navbar"></div>
+    <main class="content">
+      <div class="page-header">
+        <div>
+          <h1 class="ph-title">Leads</h1>
+          <div class="ph-sub">Track and convert your sales pipeline</div>
+        </div>
+<div class="page-actions">
+<button class="btn" id="btnImportLeads" type="button" style="display:none">&#8682; Import Excel/CSV</button>
+<button class="btn btn-primary" id="btnNewLead" type="button">&#65291; New lead</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="toolbar">
+          <div class="search-box">
+            <span class="s-ico">&#128269;</span>
+            <input class="input" type="text" id="leadSearch" placeholder="Search name, email, phone…">
+          </div>
+          <select class="select" id="filterStatus" aria-label="Status filter">
+            <option value="">All statuses</option>
+            <option value="New">New</option>
+            <option value="Contacted">Contacted</option>
+            <option value="Qualified">Qualified</option>
+            <option value="Proposal">Proposal</option>
+            <option value="Negotiation">Negotiation</option>
+            <option value="Won">Won</option>
+            <option value="Lost">Lost</option>
+            <option value="On Hold">On Hold</option>
+          </select>
+          <select class="select" id="filterSource" aria-label="Source filter">
+            <option value="">All sources</option>
+            <option value="Website">Website</option>
+            <option value="Referral">Referral</option>
+            <option value="Cold Call">Cold Call</option>
+            <option value="LinkedIn">LinkedIn</option>
+            <option value="Email">Email</option>
+            <option value="Walk-in">Walk-in</option>
+            <option value="Social Media">Social Media</option>
+            <option value="Other">Other</option>
+          </select>
+          <select class="select" id="filterPriority" aria-label="Priority filter">
+            <option value="">All priorities</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="Urgent">Urgent</option>
+          </select>
+          <div class="spacer"></div>
+          <button class="btn btn-ghost" id="btnClearFilters" type="button">Clear</button>
+        </div>
+        <div class="card-body tight">
+          <div class="table-wrap">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Lead</th>
+                  <th>Company</th>
+                  <th>Source</th>
+                  <th>Value</th>
+                  <th>Status</th>
+                  <th>Priority</th>
+                  <th>Assigned to</th>
+                  <th>Next follow-up</th>
+                  <th class="td-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="leadRows"></tbody>
+            </table>
+          </div>
+        </div>
+        <div id="pagination"></div>
+      </div>
+    </main>
+    <div id="footer"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="leadModal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <form id="leadForm">
+      <div class="modal-header">
+        <h3 id="leadModalTitle">New lead</h3>
+        <button class="modal-close" data-close="leadModal" type="button">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="leadName">Name <span class="req">*</span></label>
+            <input class="input" type="text" id="leadName" placeholder="Contact name" required>
+          </div>
+          <div class="form-group">
+            <label for="leadEmail">Email</label>
+            <input class="input" type="email" id="leadEmail" placeholder="name@company.com">
+          </div>
+          <div class="form-group">
+            <label for="leadPhone">Phone</label>
+            <input class="input" type="text" id="leadPhone" placeholder="+1 555 000 1234">
+          </div>
+          <div class="form-group">
+            <label for="leadCompany">Company</label>
+            <select class="select" id="leadCompany"><option value="">No company</option></select>
+          </div>
+          <div class="form-group">
+            <label for="leadSource">Source</label>
+            <select class="select" id="leadSource">
+              <option value="">Select source</option>
+              <option value="Website">Website</option>
+              <option value="Referral">Referral</option>
+              <option value="Cold Call">Cold Call</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Email">Email</option>
+              <option value="Walk-in">Walk-in</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="leadStatus">Status</label>
+            <select class="select" id="leadStatus">
+              <option value="New">New</option>
+              <option value="Contacted">Contacted</option>
+              <option value="Qualified">Qualified</option>
+              <option value="Proposal">Proposal</option>
+              <option value="Negotiation">Negotiation</option>
+              <option value="Won">Won</option>
+              <option value="Lost">Lost</option>
+              <option value="On Hold">On Hold</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="leadPriority">Priority</label>
+            <select class="select" id="leadPriority">
+              <option value="Low">Low</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="High">High</option>
+              <option value="Urgent">Urgent</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="leadAssigned">Assigned to</label>
+            <select class="select" id="leadAssigned"><option value="">Unassigned</option></select>
+          </div>
+          <div class="form-group">
+            <label for="leadValue">Value (USD)</label>
+            <input class="input" type="number" id="leadValue" min="0" step="1" placeholder="0">
+          </div>
+          <div class="form-group">
+            <label for="leadService">Service</label>
+            <input class="input" type="text" id="leadService" placeholder="e.g. Website redesign">
+          </div>
+          <div class="form-group">
+            <label for="leadNextFollowup">Next follow-up</label>
+            <input class="input" type="date" id="leadNextFollowup">
+          </div>
+          <div class="form-group span-2">
+            <label for="leadDescription">Description</label>
+            <textarea class="textarea" id="leadDescription" placeholder="Context, requirements, budget…"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" type="button" data-close="leadModal">Cancel</button>
+        <button class="btn btn-primary" type="submit" id="leadSaveBtn">Save lead</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="importModal">
+  <div class="modal" role="dialog" aria-modal="true">
+    <form id="importForm">
+      <div class="modal-header">
+        <h3>Import leads</h3>
+        <button class="modal-close" data-close="importModal" type="button">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <div class="form-group span-2">
+            <label for="importFile">File <span class="req">*</span></label>
+            <input class="input" type="file" id="importFile" accept=".csv,.xlsx">
+            <div class="muted small" style="margin-top:6px">
+              CSV or Excel with a header row. Supported columns: name, email,
+              phone, company, source, status, priority, value, service,
+              description, next_followup.
+            </div>
+          </div>
+          <div class="form-group span-2">
+            <label for="importEmployee">Assign all leads to <span class="req">*</span></label>
+            <select class="select" id="importEmployee"><option value="">Select employee</option></select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" type="button" data-close="importModal">Cancel</button>
+        <button class="btn btn-primary" type="submit" id="importSubmit">Import leads</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" id="leadDetailModal">
+  <div class="modal lg" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <h3 id="leadDetailTitle">Lead details</h3>
+      <button class="modal-close" data-close="leadDetailModal" type="button">&times;</button>
+    </div>
+    <div class="modal-body" id="leadDetailInfo"></div>
+    <div class="tabs" id="leadDetailTabs">
+      <button class="tab active" type="button" data-tab="followups">Follow-ups</button>
+      <button class="tab" type="button" data-tab="calls">Call log</button>
+    </div>
+    <div class="tab-panel active" data-panel="followups">
+      <div class="card-body">
+        <form class="form-grid" id="quickFollowupForm">
+          <div class="form-group">
+            <label for="qfType">Type</label>
+            <select class="select" id="qfType">
+              <option value="Call">Call</option>
+              <option value="Email">Email</option>
+              <option value="Meeting">Meeting</option>
+              <option value="WhatsApp">WhatsApp</option>
+              <option value="Demo">Demo</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="qfDue">Due date</label>
+            <input class="input" type="date" id="qfDue">
+          </div>
+          <div class="form-group span-2">
+            <label for="qfNotes">Notes</label>
+            <textarea class="textarea" id="qfNotes" placeholder="What is this follow-up about?"></textarea>
+          </div>
+          <div class="span-2 row end">
+            <button class="btn btn-primary btn-sm" type="submit" id="qfSaveBtn">Add follow-up</button>
+          </div>
+        </form>
+        <div class="divider"></div>
+        <div id="leadFollowupList"></div>
+      </div>
+    </div>
+    <div class="tab-panel" data-panel="calls">
+      <div class="card-body">
+        <form class="form-grid" id="quickCallForm">
+          <div class="form-group">
+            <label for="qcDirection">Direction</label>
+            <select class="select" id="qcDirection">
+              <option value="Outbound">Outbound</option>
+              <option value="Inbound">Inbound</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="qcDuration">Duration (seconds)</label>
+            <input class="input" type="number" id="qcDuration" min="0" step="1" placeholder="e.g. 180">
+          </div>
+          <div class="form-group">
+            <label for="qcOutcome">Outcome</label>
+            <select class="select" id="qcOutcome">
+              <option value="Interested">Interested</option>
+              <option value="Not Interested">Not Interested</option>
+              <option value="No Answer">No Answer</option>
+              <option value="Callback">Callback</option>
+              <option value="Voicemail">Voicemail</option>
+              <option value="Wrong Number">Wrong Number</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="qcSummary">Summary</label>
+            <input class="input" type="text" id="qcSummary" placeholder="What was discussed">
+          </div>
+          <div class="span-2 row end">
+            <button class="btn btn-primary btn-sm" type="submit" id="qcSaveBtn">Log call</button>
+          </div>
+        </form>
+        <div class="divider"></div>
+        <div id="leadCallList"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" type="button" data-close="leadDetailModal">Close</button>
+      <button class="btn btn-primary" type="button" id="btnDetailEdit">Edit lead</button>
+    </div>
+  </div>
+</div>
+
+<div id="modal-root"></div>
+<div id="toast-root" class="toast-container"></div>
+<script src="/js/auth.js"></script>
+<script src="/js/leads.js"></script>
+</body>
+</html>

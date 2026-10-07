@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings | CRM Pro</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/dashboard.css">
+<link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body data-page="settings">
+<div class="app-shell">
+  <div id="sidebar"></div>
+  <div class="main">
+    <div id="navbar"></div>
+    <main class="content">
+      <div class="page-header">
+        <div>
+          <div class="ph-title">Settings</div>
+          <div class="ph-sub">Manage your profile, password and session</div>
+        </div>
+      </div>
+
+      <div class="grid-23">
+        <div>
+          <section class="card">
+            <div class="card-header">
+              <div>
+                <h3>My profile</h3>
+                <div class="ch-sub">Update your personal details</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form id="profileForm" novalidate>
+                <div class="form-grid">
+                  <div class="form-group span-2">
+                    <label for="setFullName">Full name <span class="req">*</span></label>
+                    <input class="input" type="text" id="setFullName" placeholder="Your full name" required>
+                  </div>
+                  <div class="form-group span-2">
+                    <label for="setEmail">Email address</label>
+                    <input class="input" type="email" id="setEmail" readonly>
+                  </div>
+                  <div class="form-group">
+                    <label for="setPhone">Phone</label>
+                    <input class="input" type="tel" id="setPhone" placeholder="+1 555 000 1234">
+                  </div>
+                  <div class="form-group">
+                    <label for="setDepartment">Department</label>
+                    <input class="input" type="text" id="setDepartment" placeholder="e.g. Sales">
+                  </div>
+                  <div class="form-group">
+                    <label for="setDesignation">Designation</label>
+                    <input class="input" type="text" id="setDesignation" placeholder="e.g. Account Manager">
+                  </div>
+                </div>
+                <div class="row end" style="margin-top:16px">
+                  <button class="btn btn-primary" type="submit" id="profileSave">Save changes</button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <h3>Account</h3>
+            </div>
+            <div class="card-body" id="accountInfo">
+              <div class="loading"><div><div class="spinner"></div>Loading…</div></div>
+            </div>
+          </section>
+        </div>
+
+        <div>
+          <section class="card" id="passwordCard">
+            <div class="card-header">
+              <div>
+                <h3>Change password</h3>
+                <div class="ch-sub">Minimum 6 characters</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <form id="passwordForm" novalidate>
+                <div class="form-grid">
+                  <div class="form-group span-2">
+                    <label for="currentPassword">Current password <span class="req">*</span></label>
+                    <input class="input" type="password" id="currentPassword" autocomplete="current-password" required>
+                  </div>
+                  <div class="form-group span-2">
+                    <label for="newPassword">New password <span class="req">*</span></label>
+                    <input class="input" type="password" id="newPassword" autocomplete="new-password" required>
+                  </div>
+                  <div class="form-group span-2">
+                    <label for="confirmPassword">Confirm password <span class="req">*</span></label>
+                    <input class="input" type="password" id="confirmPassword" autocomplete="new-password" required>
+                    <span class="hint">Both entries of the new password must match.</span>
+                  </div>
+                </div>
+                <div class="row end" style="margin-top:16px">
+                  <button class="btn btn-primary" type="submit" id="passwordSave">Update password</button>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <h3>Session</h3>
+            </div>
+            <div class="card-body">
+              <p class="muted small mb-0">You are signed in as <strong id="sessionName">…</strong> on this device. Signing out clears your local session token.</p>
+              <div style="margin-top:14px">
+                <button class="btn btn-danger" type="button" id="signOutBtn">Sign out</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    <div id="footer"></div>
+  </div>
+</div>
+<div id="modal-root"></div>
+<div id="toast-root" class="toast-container"></div>
+<script src="/js/auth.js"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>

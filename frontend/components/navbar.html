@@ -1,0 +1,30 @@
+<header class="topbar" id="app-topbar">
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">&#9776;</button>
+
+  <div>
+    <div class="topbar-title" id="pageTitle">Dashboard</div>
+    <div class="topbar-sub" id="pageSubtitle"></div>
+  </div>
+
+  <div class="topbar-right">
+    <button class="icon-btn" id="notifBtn" title="Notifications">
+      &#9853;
+      <span class="dot" id="notifCount" hidden>0</span>
+    </button>
+
+    <div class="user-chip" id="userChip">
+      <span class="avatar" id="userAvatar">A</span>
+      <span class="u-meta">
+        <span class="u-name" id="userName">User</span><br />
+        <span class="u-role" id="userRole">role</span>
+      </span>
+      <span class="muted">&#9662;</span>
+
+      <div class="dropdown" id="userMenu">
+        <a href="/pages/settings.html">&#9881; Profile &amp; Settings</a>
+        <div class="divider"></div>
+        <button type="button" class="danger" id="logoutBtn">&#10162; Sign out</button>
+      </div>
+    </div>
+  </div>
+</header>
