@@ -221,7 +221,7 @@
         "<td>" + CRM.badge(e.role) + "</td>" +
         "<td><div class=\"cell-main small\">" + CRM.escapeHtml(e.department || "—") + "</div>" +
         '<div class="cell-sub">' + CRM.escapeHtml(e.designation || "") + "</div></td>" +
-        "<td>" + CRM.escapeHtml(e.phone || "—") + "</td>" +
+        "<td>" + (e.phone ? '<a href="tel:' + CRM.escapeHtml(e.phone) + '" class="call-link" title="Call ' + CRM.escapeHtml(e.phone) + '">' + CRM.escapeHtml(e.phone) + ' <span class="call-icon" aria-hidden="true">📞</span></a>' : "—") + "</td>" +
         '<td><div class="small">' + workload + "</div>" +
         '<div class="cell-sub">' + CRM.formatNumber(e.call_count || 0) + " calls logged</div></td>" +
         "<td>" + CRM.badge(e.status) + "</td>" +
@@ -378,7 +378,7 @@
         kpi(e.call_count, "Calls logged") + "</div>" +
         '<div class="divider"></div>' +
         infoRow("Email", CRM.escapeHtml(e.email || "—")) +
-        infoRow("Phone", CRM.escapeHtml(e.phone || "—")) +
+        infoRow("Phone", e.phone ? '<a href="tel:' + CRM.escapeHtml(e.phone) + '" class="call-link" title="Call ' + CRM.escapeHtml(e.phone) + '">' + CRM.escapeHtml(e.phone) + ' <span class="call-icon" aria-hidden="true">📞</span></a>' : "—") +
         infoRow("Role", CRM.badge(e.role)) +
         infoRow("Department", CRM.escapeHtml(e.department || "—")) +
         infoRow("Designation", CRM.escapeHtml(e.designation || "—")) +
