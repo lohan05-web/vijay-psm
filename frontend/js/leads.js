@@ -436,7 +436,7 @@
       if (info) {
         info.innerHTML = '<div class="form-grid">' +
           infoCell("Email", lead.email ? '<a href="mailto:' + esc(lead.email) + '">' + esc(lead.email) + "</a>" : "—") +
-          infoCell("Phone", esc(lead.phone || "—")) +
+          infoCell("Phone", lead.phone ? '<a href="tel:' + esc(lead.phone) + '" class="call-link" title="Call ' + esc(lead.phone) + '">' + esc(lead.phone) + ' <span class="call-icon" aria-hidden="true">📞</span></a>' : "—") +
           infoCell("Company", esc(lead.company_name || "—")) +
           infoCell("Source", esc(lead.source || "—")) +
           infoCell("Status", CRM.badge(lead.status)) +
@@ -598,7 +598,7 @@
         '<div class="cell-sub">' + esc(item.website || "—") + "</div></td>" +
         "<td>" + esc(item.industry || "—") + "</td>" +
         "<td><div>" + esc(item.email || "—") + "</div>" +
-        '<div class="cell-sub">' + esc(item.phone || "") + "</div></td>" +
+        '<div class="cell-sub">' + (item.phone ? '<a href="tel:' + esc(item.phone) + '" class="call-link" title="Call ' + esc(item.phone) + '">' + esc(item.phone) + ' <span class="call-icon" aria-hidden="true">📞</span></a>' : "") + "</div></td>" +
         "<td>" + esc(location || "—") + "</td>" +
         "<td>" + CRM.badge(item.status) + "</td>" +
         "<td>" + CRM.formatNumber(item.lead_count || 0) + "</td>" +
@@ -670,7 +670,7 @@
             infoCell("Industry", esc(company.industry || "—")) +
             infoCell("Website", company.website ? '<a href="' + esc(company.website) + '" target="_blank" rel="noopener">' + esc(company.website) + "</a>" : "—") +
             infoCell("Email", company.email ? '<a href="mailto:' + esc(company.email) + '">' + esc(company.email) + "</a>" : "—") +
-            infoCell("Phone", esc(company.phone || "—")) +
+            infoCell("Phone", company.phone ? '<a href="tel:' + esc(company.phone) + '" class="call-link" title="Call ' + esc(company.phone) + '">' + esc(company.phone) + ' <span class="call-icon" aria-hidden="true">📞</span></a>' : "—") +
             infoCell("City", esc(company.city || "—")) +
             infoCell("Country", esc(company.country || "—")) +
             infoCell("Status", CRM.badge(company.status)) +

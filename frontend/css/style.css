@@ -427,3 +427,19 @@ h3 { font-size: 15.5px; }
   font-size: 12px; font-weight: 700;
 }
 .cell-with-avatar { display: flex; align-items: center; gap: 10px; }
+
+.call-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary, #2563eb);
+  text-decoration: none;
+  font-weight: 500;
+}
+.call-link:hover {
+  text-decoration: underline;
+}
+.call-icon {
+  font-size: 0.9em;
+  line-height: 1;
+}
