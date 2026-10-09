@@ -8,3 +8,73 @@ Press CTRL+C to quit
 2026-10-07 18:51:44,377 | INFO | CRM backend ready on http://0.0.0.0:5000
  * Debugger is active!
  * Debugger PIN: 133-278-969
+2026-10-07 18:57:26,692 | INFO | GET / -> 200 (191ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:26] "GET / HTTP/1.1" 200 -
+2026-10-07 18:57:26,725 | INFO | GET /css/login.css -> 200 (1ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:26] "GET /css/login.css HTTP/1.1" 200 -
+2026-10-07 18:57:26,727 | INFO | GET /css/responsive.css -> 200 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:26] "GET /css/responsive.css HTTP/1.1" 200 -
+2026-10-07 18:57:26,737 | INFO | GET /css/style.css -> 200 (21ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:26] "GET /css/style.css HTTP/1.1" 200 -
+2026-10-07 18:57:26,926 | INFO | GET /js/auth.js -> 200 (198ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:26] "GET /js/auth.js HTTP/1.1" 200 -
+2026-10-07 18:57:26,964 | INFO | GET /favicon.ico -> 404 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:26] "GET /favicon.ico HTTP/1.1" 404 -
+2026-10-07 18:57:30,052 | INFO | GET / -> 200 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:30] "GET / HTTP/1.1" 200 -
+2026-10-07 18:57:30,315 | INFO | POST /api/auth/login -> 200 (197ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:30] "POST /api/auth/login HTTP/1.1" 200 -
+2026-10-07 18:57:30,522 | INFO | GET /api/auth/me -> 401 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:30] "GET /api/auth/me HTTP/1.1" 401 -
+2026-10-07 18:57:30,563 | INFO | GET /api/reports/summary -> 401 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:30] "GET /api/reports/summary HTTP/1.1" 401 -
+2026-10-07 18:57:30,569 | INFO | GET /api/leads -> 401 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:30] "GET /api/leads HTTP/1.1" 401 -
+2026-10-07 18:57:30,575 | INFO | GET /api/projects -> 401 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:30] "GET /api/projects HTTP/1.1" 401 -
+2026-10-07 18:57:30,584 | INFO | GET /api/companies -> 401 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:30] "GET /api/companies HTTP/1.1" 401 -
+2026-10-07 18:57:30,591 | INFO | GET /api/employees -> 401 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:30] "GET /api/employees HTTP/1.1" 401 -
+2026-10-07 18:57:30,601 | INFO | GET /api/developers -> 401 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:30] "GET /api/developers HTTP/1.1" 401 -
+2026-10-07 18:57:30,607 | INFO | GET /api/notifications -> 404 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:30] "GET /api/notifications HTTP/1.1" 404 -
+2026-10-07 18:57:39,009 | INFO | POST /api/auth/login -> 200 (163ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:39] "POST /api/auth/login HTTP/1.1" 200 -
+2026-10-07 18:57:43,371 | INFO | POST /api/auth/login -> 200 (193ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:43] "POST /api/auth/login HTTP/1.1" 200 -
+2026-10-07 18:57:43,446 | INFO | GET /api/auth/me -> 200 (0ms) [prasanna]
+127.0.0.1 - - [07/Oct/2026 18:57:43] "GET /api/auth/me HTTP/1.1" 200 -
+2026-10-07 18:57:43,481 | INFO | GET /api/reports/summary -> 200 (0ms) [prasanna]
+127.0.0.1 - - [07/Oct/2026 18:57:43] "GET /api/reports/summary HTTP/1.1" 200 -
+2026-10-07 18:57:43,508 | INFO | GET /api/leads -> 200 (0ms) [prasanna]
+127.0.0.1 - - [07/Oct/2026 18:57:43] "GET /api/leads HTTP/1.1" 200 -
+2026-10-07 18:57:43,533 | INFO | GET /api/projects -> 200 (0ms) [prasanna]
+127.0.0.1 - - [07/Oct/2026 18:57:43] "GET /api/projects HTTP/1.1" 200 -
+2026-10-07 18:57:43,554 | INFO | GET /api/companies -> 200 (0ms) [prasanna]
+127.0.0.1 - - [07/Oct/2026 18:57:43] "GET /api/companies HTTP/1.1" 200 -
+2026-10-07 18:57:43,580 | INFO | GET /api/employees -> 200 (0ms) [prasanna]
+127.0.0.1 - - [07/Oct/2026 18:57:43] "GET /api/employees HTTP/1.1" 200 -
+2026-10-07 18:57:43,600 | INFO | GET /api/developers -> 200 (0ms) [prasanna]
+127.0.0.1 - - [07/Oct/2026 18:57:43] "GET /api/developers HTTP/1.1" 200 -
+2026-10-07 18:57:43,621 | INFO | GET /api/notifications -> 404 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:57:43] "GET /api/notifications HTTP/1.1" 404 -
+2026-10-07 18:57:43,682 | INFO | GET /api/reports/daily -> 200 (39ms) [prasanna]
+127.0.0.1 - - [07/Oct/2026 18:57:43] "GET /api/reports/daily HTTP/1.1" 200 -
+2026-10-07 18:57:43,723 | INFO | GET /api/reports/export/leads -> 200 (21ms) [prasanna]
+127.0.0.1 - - [07/Oct/2026 18:57:43] "GET /api/reports/export/leads HTTP/1.1" 200 -
+2026-10-07 18:58:11,260 | INFO | GET / -> 200 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:58:11] "GET / HTTP/1.1" 200 -
+2026-10-07 18:58:20,263 | INFO | POST /api/auth/login -> 200 (154ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:58:20] "POST /api/auth/login HTTP/1.1" 200 -
+2026-10-07 18:58:20,327 | INFO | GET /api/auth/notifications -> 200 (0ms) [prasanna]
+127.0.0.1 - - [07/Oct/2026 18:58:20] "GET /api/auth/notifications HTTP/1.1" 200 -
+2026-10-07 18:58:20,375 | INFO | GET /css/style.css -> 200 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:58:20] "GET /css/style.css HTTP/1.1" 200 -
+2026-10-07 18:58:20,410 | INFO | GET /js/main.js -> 404 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:58:20] "GET /js/main.js HTTP/1.1" 404 -
+2026-10-07 18:58:20,429 | INFO | GET /dashboard.html -> 404 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:58:20] "GET /dashboard.html HTTP/1.1" 404 -
+2026-10-07 18:58:20,435 | INFO | GET /leads.html -> 404 (0ms) [anonymous]
+127.0.0.1 - - [07/Oct/2026 18:58:20] "GET /leads.html HTTP/1.1" 404 -
