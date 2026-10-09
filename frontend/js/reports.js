@@ -49,7 +49,7 @@
     var items = [
       { label: "Leads created", val: pd.leads.created, ico: "&#10148;", accent: "" },
       { label: "Leads won", val: pd.leads.won, ico: "&#10003;", accent: "accent-success" },
-      { label: "Revenue", val: CRM.formatMoney(pd.revenue), ico: "&#36;", accent: "accent-success" },
+      { label: "Revenue", val: CRM.formatMoney(pd.revenue), ico: "&#8377;", accent: "accent-success" },
       { label: "Pipeline value", val: CRM.formatMoney(pd.pipeline_value), ico: "&#9641;", accent: "accent-info" },
       { label: "Projects created", val: pd.projects_created, ico: "&#9635;", accent: "" },
       { label: "Calls", val: pd.calls, ico: "&#9743;", accent: "accent-warning" },

@@ -416,9 +416,9 @@
     if (isNaN(num)) return "—";
     var sign = num < 0 ? "-" : "";
     num = Math.abs(num);
-    if (num >= 1000000) return sign + "$" + (num / 1000000).toFixed(2) + "M";
-    if (num >= 1000) return sign + "$" + (num / 1000).toFixed(1) + "K";
-    return sign + "$" + num.toFixed(0);
+    if (num >= 1000000) return sign + "₹" + (num / 1000000).toFixed(2) + "M";
+    if (num >= 1000) return sign + "₹" + (num / 1000).toFixed(1) + "K";
+    return sign + "₹" + num.toFixed(0);
   }
 
   function formatNumber(value) {
@@ -451,7 +451,7 @@
   function money(value) {
     var num = parseFloat(value);
     if (isNaN(num)) return "—";
-    return "$" + num.toLocaleString("en-US", { maximumFractionDigits: 0 });
+    return "₹" + num.toLocaleString("en-US", { maximumFractionDigits: 0 });
   }
 
   function emptyState(icon, title, subtitle, actionHtml) {

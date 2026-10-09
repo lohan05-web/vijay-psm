@@ -197,7 +197,7 @@
         foot: CRM.formatNumber(l.conversion_rate || 0) + "% conversion rate"
       }) +
       statCard({
-        label: "Pipeline Value", icon: "$", accent: "accent-info",
+        label: "Pipeline Value", icon: "₹", accent: "accent-info",
         value: CRM.money(l.pipeline_value),
         foot: CRM.formatNumber(l.converted || 0) + " leads converted"
       }) +
